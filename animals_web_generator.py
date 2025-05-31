@@ -3,8 +3,9 @@ import requests
 
 def load_data_from_api():
     """Lädt Tierdaten über die API."""
+    animal_name = input("Enter a name of an animal: ").strip()
     api_key = "sl5K/ZnEUXPhl1zixQPn3w==atvhb8vzsjU72bw8"  # <== Trage hier deinen API-Key ein
-    url = "https://api.api-ninjas.com/v1/animals?name=fox"
+    url = f"https://api.api-ninjas.com/v1/animals?name={animal_name}"
     headers = {"X-Api-Key": api_key}
 
     response = requests.get(url, headers=headers)

@@ -1,20 +1,4 @@
-import requests
-
-
-def load_data_from_api():
-    """Lädt Tierdaten über die API."""
-    animal_name = input("Enter a name of an animal: ").strip()
-    api_key = "sl5K/ZnEUXPhl1zixQPn3w==atvhb8vzsjU72bw8"
-    url = f"https://api.api-ninjas.com/v1/animals?name={animal_name}"
-    headers = {"X-Api-Key": api_key}
-
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.json(), animal_name
-    else:
-        print(f"Fehler beim Abrufen der API-Daten: {response.status_code}")
-        return [], animal_name
-
+import data_fetcher
 
 
 def serialize_animal(animal_obj):
@@ -76,5 +60,6 @@ def create_html(data, template_path, output_path, animal_name):
 
 
 if __name__ == "__main__":
-    data, animal_name = load_data_from_api()
+    animal_name = input("Please enter an animal: ")
+    data = data_fetcher.fetch_data(animal_name)
     create_html(data, "animals_template.html", "animals.html", animal_name)

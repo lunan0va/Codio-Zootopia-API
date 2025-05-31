@@ -4,16 +4,16 @@ import requests
 def load_data_from_api():
     """Lädt Tierdaten über die API."""
     animal_name = input("Enter a name of an animal: ").strip()
-    api_key = "sl5K/ZnEUXPhl1zixQPn3w==atvhb8vzsjU72bw8"  # <== Trage hier deinen API-Key ein
+    api_key = "sl5K/ZnEUXPhl1zixQPn3w==atvhb8vzsjU72bw8"
     url = f"https://api.api-ninjas.com/v1/animals?name={animal_name}"
     headers = {"X-Api-Key": api_key}
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        return response.json()
+        return response.json(), animal_name
     else:
         print(f"Fehler beim Abrufen der API-Daten: {response.status_code}")
-        return []
+        return [], animal_name
 
 
 
@@ -59,12 +59,16 @@ def generate_animal_cards(data):
     return ''.join(serialize_animal(animal) for animal in data)
 
 
-def create_html(data, template_path, output_path):
-    """Erstellt die finale HTML-Datei mit den Tierkarten."""
+def create_html(data, template_path, output_path, animal_name):
+    """Erstellt die finale HTML-Datei mit Tierkarten oder einer Fehlermeldung."""
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
 
-    cards_html = generate_animal_cards(data)
+    if data:
+        cards_html = generate_animal_cards(data)
+    else:
+        cards_html = f'<h2>The animal "{animal_name}" doesn\'t exist.</h2>'
+
     final_html = template.replace("__REPLACE_ANIMALS_INFO__", cards_html)
 
     with open(output_path, "w", encoding="utf-8") as f:
@@ -72,5 +76,5 @@ def create_html(data, template_path, output_path):
 
 
 if __name__ == "__main__":
-    data = load_data_from_api()
-    create_html(data, "animals_template.html", "animals.html")
+    data, animal_name = load_data_from_api()
+    create_html(data, "animals_template.html", "animals.html", animal_name)

@@ -1,46 +1,40 @@
 # Zootopia API Project
 
-Dieses Projekt erstellt eine dynamische Website mit Tierkarten, indem es Daten von einer externen API (API Ninjas) abruft. Es ist eine Weiterentwicklung des ursprünglichen Zootopia-Projekts, das auf einer statischen JSON-Datei basierte.
+## What is this project?
 
-## Installation
+The result of an assignment for [Masterschool]([https://learn.masterschool.com/](https://referral.masterschool.com/u9bTQr92)).
 
-1. Repository klonen:  
-   `git clone https://github.com/lunan0va/zootopia-api.git`  
-   `cd zootopia-api`
+![Static Badge](https://img.shields.io/badge/My_Zootopia-100%2F100-brightgreen?style=flat)
 
-2. Abhängigkeiten installieren:  
-   `pip install -r requirements.txt`
+A simple Python program that fetches animal data from an external API (API Ninjas) and generates a dynamic HTML page.  
+It’s an extension of the original Zootopia project, which used a static JSON file.
 
-3. Eine `.env`-Datei im Projektordner erstellen mit folgendem Inhalt:
+## How to use
 
-```
-API_KEY='DEIN_API_KEY_HIER'
-```
+> [!NOTE]  
+> Tested with `Python 3.13.3`
 
-## Usage
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/lunan0va/Codio-Zootopia-AP
+   cd zootopia-api
+   ```
 
-Das Programm fragt den Namen eines Tiers ab, ruft passende Informationen über die API ab und erstellt daraus eine `animals.html`-Datei.
+2. Install dependencies: 
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Zum Ausführen:
+3. Create a .env file in the project folder with your API key:
+   ```
+   API_KEY='YOUR_API_KEY_HERE'
+   ```
+4. Run:
+   ```bash
+   python animals_web_generator.py
+   ```
 
-```
-python animals_web_generator.py
-```
-
-Beispiel:
-
-```
-Please enter an animal: Fox  
-```
-
-## Projektstruktur
-
-- `animals_web_generator.py` – Generiert die HTML-Seite  
-- `data_fetcher.py` – Holt die Daten von der API  
-- `animals_template.html` – HTML-Vorlage mit Platzhalter  
-- `.env` – Enthält den geheimen API-Schlüssel (nicht im Repo)  
-- `requirements.txt` – Alle Python-Abhängigkeiten
-
-## Contributing
-
-Beiträge sind willkommen! Erstelle gerne einen Pull Request oder öffne ein Issue, wenn du Vorschläge oder Verbesserungen hast.
+Example prompt:
+   ```bash
+   Please enter an animal: Fox
+   ```

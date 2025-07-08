@@ -4,7 +4,7 @@
 
 The result of an assignment for [Masterschool]([https://learn.masterschool.com/](https://referral.masterschool.com/u9bTQr92)).
 
-![Static Badge](https://img.shields.io/badge/My_Zootopia-100%2F100-brightgreen?style=flat)
+![Static Badge](https://img.shields.io/badge/Zootopia_with_API-100%2F100-brightgreen?style=flat)
 
 A simple Python program that fetches animal data from an external API (API Ninjas) and generates a dynamic HTML page.  
 It’s an extension of the original Zootopia project, which used a static JSON file.
